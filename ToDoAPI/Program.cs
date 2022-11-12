@@ -17,6 +17,7 @@ builder.Services.AddDbContext<GoalDatabaseContext>(options =>
 });
 
 builder.Services.AddScoped<IGoalRepository, GoalRepository>();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 

@@ -11,7 +11,14 @@ namespace ToDoAPI.Repositories
         {
             _databaseContext = databaseContext;
         }
-         
+
+        public async Task<Goal> AddAsync(Goal goal)
+        {
+            await _databaseContext.AddAsync(goal);
+            await _databaseContext.SaveChangesAsync();
+            return goal;
+        }
+
         public async Task<IEnumerable<Goal>> GetAllAsync()
         {
             return await _databaseContext.Goals.ToListAsync();

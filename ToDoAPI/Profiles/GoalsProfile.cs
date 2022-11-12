@@ -6,7 +6,7 @@ namespace ToDoAPI.Profiles
     {
         public GoalsProfile()
         {
-            CreateMap<Models.Domain.Goal, Models.Domain.Goal>()
+            CreateMap<Models.Domain.Goal, Models.DTO.Goal>()
                 .ReverseMap();
         }
     }

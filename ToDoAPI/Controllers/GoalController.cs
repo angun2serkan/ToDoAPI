@@ -45,6 +45,22 @@ namespace ToDoAPI.Controllers
             return Ok(goalsDTO);
         }
 
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> GetGoalAsync(int id)
+        {
+            var goal = await _goalRepository.GetAsync(id);
+
+            if(goal == null)
+            {
+                return NotFound();
+            }
+
+            var goalDTO = _mapper.Map<Models.DTO.Goal>(goal);
+
+            return Ok(goalDTO);
+        }
+
         
     }
 }

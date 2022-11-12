@@ -16,5 +16,10 @@ namespace ToDoAPI.Repositories
         {
             return await _databaseContext.Goals.ToListAsync();
         }
+
+        public async Task<Goal> GetAsync(int id)
+        {
+            return await _databaseContext.Goals.FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

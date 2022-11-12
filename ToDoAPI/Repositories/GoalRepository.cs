@@ -1,4 +1,5 @@
-﻿using ToDoAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ToDoAPI.Data;
 using ToDoAPI.Models.Domain;
 
 namespace ToDoAPI.Repositories
@@ -10,11 +11,10 @@ namespace ToDoAPI.Repositories
         {
             _databaseContext = databaseContext;
         }
-
-        public IEnumerable<Goal> GetAll()
+         
+        public async Task<IEnumerable<Goal>> GetAllAsync()
         {
-            return _databaseContext.Goals.ToList();
+            return await _databaseContext.Goals.ToListAsync();
         }
-
     }
 }

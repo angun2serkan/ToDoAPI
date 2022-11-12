@@ -4,6 +4,6 @@ namespace ToDoAPI.Repositories
 {
     public interface IGoalRepository
     {
-        IEnumerable<Goal> GetAll();
+        Task <IEnumerable<Goal>> GetAllAsync();
     }
 }

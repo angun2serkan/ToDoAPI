@@ -20,9 +20,9 @@ namespace ToDoAPI.Controllers
         }
         // GET: GoalController
         [HttpGet]
-        public IActionResult GetAllGoals()
+        public async Task<IActionResult> GetAllGoals()
         {
-            var goals = _goalRepository.GetAll();
+            var goals = await _goalRepository.GetAllAsync();
 
             // return DTO goals
             //var goalsDTO = new List<Models.DTO.Goal>();

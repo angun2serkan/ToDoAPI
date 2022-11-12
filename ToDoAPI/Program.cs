@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoAPI.Data;
+using ToDoAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<GoalDatabaseContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("GoalDatabaseContext"));
 });
+
+builder.Services.AddScoped<IGoalRepository, GoalRepository>();
 
 var app = builder.Build();
 

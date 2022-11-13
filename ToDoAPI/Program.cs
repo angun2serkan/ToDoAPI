@@ -23,6 +23,8 @@ builder.Services.AddDbContext<GoalDatabaseContext>(options =>
 });
 
 builder.Services.AddScoped<IGoalRepository, GoalRepository>();
+builder.Services.AddSingleton<IUserRepository, StaticUserRepository>();
+
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

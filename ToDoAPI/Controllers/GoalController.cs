@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ToDoAPI.Models.Domain;
@@ -9,6 +10,7 @@ namespace ToDoAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class GoalController : Controller
     {
         private readonly IGoalRepository _goalRepository;

@@ -10,7 +10,6 @@ namespace ToDoAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
     public class GoalController : Controller
     {
         private readonly IGoalRepository _goalRepository;
@@ -51,6 +50,7 @@ namespace ToDoAPI.Controllers
         [HttpGet]
         [Route("{id:int}")]
         [ActionName("GetGoalAsync")]
+        [Authorize(Roles = "reader")]
         public async Task<IActionResult> GetGoalAsync(int id)
         {
             var goal = await _goalRepository.GetAsync(id);
@@ -66,6 +66,7 @@ namespace ToDoAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> AddRegionAsync(Models.DTO.AddGoalRequest addGoalRequest)
         {
             //validate the request 
@@ -100,6 +101,7 @@ namespace ToDoAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> DeleteGoalAsync(int id)
         {
             //get region from database
@@ -127,6 +129,7 @@ namespace ToDoAPI.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> UpdateGoalAsync([FromRoute] int id,  [FromRoute]UpdateGoalRequest updateGoalRequest)
         {
             //validate the incoming request

@@ -55,7 +55,6 @@ namespace ToDoAPI.Repositories
             existingGoal.Id = goal.Id;
             existingGoal.Topic = goal.Topic;
             existingGoal.Description = goal.Description;
-            existingGoal.CreatedDate = goal.CreatedDate;
             existingGoal.Period = goal.Period;
 
             await _databaseContext.SaveChangesAsync();

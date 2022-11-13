@@ -78,7 +78,6 @@ namespace ToDoAPI.Controllers
                 Id = addGoalRequest.Id,
                 Topic = addGoalRequest.Topic,
                 Description = addGoalRequest.Description,
-                CreatedDate = addGoalRequest.CreatedDate,
                 Period = addGoalRequest.Period
             };
 
@@ -91,7 +90,6 @@ namespace ToDoAPI.Controllers
                 Id = goal.Id,
                 Topic = goal.Topic,
                 Description = goal.Description,
-                CreatedDate = goal.CreatedDate,
                 Period = goal.Period
             };
 
@@ -117,7 +115,6 @@ namespace ToDoAPI.Controllers
                 Id = goal.Id,
                 Topic = goal.Topic,
                 Description = goal.Description,
-                CreatedDate = goal.CreatedDate,
                 Period = goal.Period
             };
 
@@ -143,7 +140,6 @@ namespace ToDoAPI.Controllers
             {
                 Topic = updateGoalRequest.Topic,
                 Description = updateGoalRequest.Description,
-                CreatedDate = updateGoalRequest.CreatedDate,
                 Period = updateGoalRequest.Period
             };
 
@@ -162,7 +158,6 @@ namespace ToDoAPI.Controllers
                 Id=goal.Id,
                 Topic = goal.Topic,
                 Description = goal.Description,
-                CreatedDate = goal.CreatedDate,
                 Period = goal.Period
             };
 

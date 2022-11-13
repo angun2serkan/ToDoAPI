@@ -67,10 +67,10 @@ namespace ToDoAPI.Controllers
         public async Task<IActionResult> AddRegionAsync(Models.DTO.AddGoalRequest addGoalRequest)
         {
             //validate the request 
-            if (!ValidateAddGoalAsync(addGoalRequest))
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ValidateAddGoalAsync(addGoalRequest))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             //request(dto) to domain model
             var goal = new Models.Domain.Goal()
@@ -132,10 +132,10 @@ namespace ToDoAPI.Controllers
             [FromRoute] UpdateGoalRequest updateGoalRequest)
         {
             //validate the incoming request
-            if (!ValidateUpdateGoalAsync(updateGoalRequest))
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ValidateUpdateGoalAsync(updateGoalRequest))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
 
             //convert dto to domain model

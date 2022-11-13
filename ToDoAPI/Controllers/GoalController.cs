@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ToDoAPI.Models.Domain;
+using ToDoAPI.Models.DTO;
 using ToDoAPI.Repositories;
 
 namespace ToDoAPI.Controllers
@@ -118,6 +119,43 @@ namespace ToDoAPI.Controllers
             return Ok(goalDTO);
         }
 
-        
+
+        [HttpPut]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> UpdateGoalAsync([FromRoute] int id, [FromRoute] UpdateGoalRequest updateGoalRequest)
+        {
+            //convert dto to domain model
+            var goal = new Models.Domain.Goal()
+            {
+                Topic = updateGoalRequest.Topic,
+                Description = updateGoalRequest.Description,
+                CreatedDate = updateGoalRequest.CreatedDate,
+                Period = updateGoalRequest.Period
+            };
+
+            //update goal using repository
+            goal = await _goalRepository.UpdateAsync(id, goal);
+
+            //if null then notfound
+            if (goal == null)
+            {
+                return NotFound();
+            }
+
+            //convert domain back to dto
+            var goalDTO = new Models.DTO.Goal
+            {
+                Id=goal.Id,
+                Topic = goal.Topic,
+                Description = goal.Description,
+                CreatedDate = goal.CreatedDate,
+                Period = goal.Period
+            };
+
+            //return Ok response
+            return Ok(goalDTO);
+        }
+
+
     }
 }

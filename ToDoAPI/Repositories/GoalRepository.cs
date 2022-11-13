@@ -43,5 +43,24 @@ namespace ToDoAPI.Repositories
         {
             return await _databaseContext.Goals.FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<Goal> UpdateAsync(int id, Goal goal)
+        {
+            var existingGoal = await _databaseContext.Goals.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingGoal == null)
+            {
+                return null;
+            }
+            existingGoal.Id = goal.Id;
+            existingGoal.Topic = goal.Topic;
+            existingGoal.Description = goal.Description;
+            existingGoal.CreatedDate = goal.CreatedDate;
+            existingGoal.Period = goal.Period;
+
+            await _databaseContext.SaveChangesAsync();
+
+            return existingGoal;
+        }
     }
 }

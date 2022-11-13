@@ -1,8 +1,10 @@
-﻿namespace ToDoAPI.Repositories
+﻿using ToDoAPI.Models.Domain;
+
+namespace ToDoAPI.Repositories
 {
     public interface IUserRepository
     {
-        Task<bool> AuthenticateAsync(string username, string password);
+        Task<User> AuthenticateAsync(string username, string password);
 
     }
 }

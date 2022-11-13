@@ -5,6 +5,7 @@ using ToDoAPI.Data;
 using ToDoAPI.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using TokenHandler = ToDoAPI.Repositories.TokenHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ builder.Services.AddDbContext<GoalDatabaseContext>(options =>
 });
 
 builder.Services.AddScoped<IGoalRepository, GoalRepository>();
+builder.Services.AddScoped<ITokenHandler, TokenHandler>();
 builder.Services.AddSingleton<IUserRepository, StaticUserRepository>();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

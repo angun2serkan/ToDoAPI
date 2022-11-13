@@ -91,6 +91,33 @@ namespace ToDoAPI.Controllers
             return CreatedAtAction(nameof(GetGoalAsync), new {id = goalDTO.Id}, goalDTO);
         }
 
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<IActionResult> DeleteGoalAsync(int id)
+        {
+            //get region from database
+            var goal = await _goalRepository.DeleteAsync(id);
+
+            //if null notfound
+            if (goal == null)
+            {
+                return NotFound();
+            }
+
+            //convert response back to dto
+            var goalDTO = new Models.DTO.Goal
+            {
+                Id = goal.Id,
+                Topic = goal.Topic,
+                Description = goal.Description,
+                CreatedDate = goal.CreatedDate,
+                Period = goal.Period
+            };
+
+            //return ok response
+            return Ok(goalDTO);
+        }
+
         
     }
 }

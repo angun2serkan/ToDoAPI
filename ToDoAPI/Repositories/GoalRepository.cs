@@ -19,6 +19,21 @@ namespace ToDoAPI.Repositories
             return goal;
         }
 
+        public async Task<Goal> DeleteAsync(int id)
+        {
+            var goal = await _databaseContext.Goals.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (goal == null)
+            {
+                return null;
+            }
+
+            //delete the goal
+            _databaseContext.Goals.Remove(goal);
+            await _databaseContext.SaveChangesAsync();
+            return goal;
+        }
+
         public async Task<IEnumerable<Goal>> GetAllAsync()
         {
             return await _databaseContext.Goals.ToListAsync();

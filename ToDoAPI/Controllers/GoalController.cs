@@ -125,8 +125,7 @@ namespace ToDoAPI.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
-        public async Task<IActionResult> UpdateGoalAsync([FromRoute] int id, 
-            [FromRoute] UpdateGoalRequest updateGoalRequest)
+        public async Task<IActionResult> UpdateGoalAsync([FromRoute] int id,  [FromRoute]UpdateGoalRequest updateGoalRequest)
         {
             //validate the incoming request
             //if (!ValidateUpdateGoalAsync(updateGoalRequest))
